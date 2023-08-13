@@ -2,7 +2,7 @@
 
 import java.util.Scanner;
 
-public class Main {
+public class baekjoon_1018 {
     private static int find(boolean[][] board, int n, int m){
         boolean square = board[n][m];
         int cnt = 0;
