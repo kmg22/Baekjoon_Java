@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Main {
+public class baekjoon_1966 {
 
     private static int find(Queue<Integer> queue, int out){
         out++; // 몇 번째로 출력될 것인가..
