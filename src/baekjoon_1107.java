@@ -23,6 +23,7 @@ public class baekjoon_1107 {
             boolean isBreak = false;
             for(int j=0; j<len; j++){
                 if(broken[str.charAt(j)-'0']){ // 고장난 버튼 누름 -> 한 번에 이동할 수 없는 번호
+                    // CharAt(int i)-'0' 통해 char형 문자들을 int형으로 변환 가능!!
                     isBreak = true;
                     break;
                 }

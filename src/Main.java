@@ -19,10 +19,11 @@ public class Main {
         for(int i=0; i<=999999; i++){ // 누를 수 있는 번호 경우의 수
             String str = String.valueOf(i);
             int len = str.length();
-
             boolean isBreak = false;
+
             for(int j=0; j<len; j++){
                 if(broken[str.charAt(j)-'0']){ // 고장난 버튼 누름 -> 한 번에 이동할 수 없는 번호
+                    // CharAt(int i)-'0' 통해 char형 문자들을 int형으로 변환 가능
                     isBreak = true;
                     break;
                 }
