@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a87a25b-6951-410c-9044-f42ed19ad9fe" name="Changes" comment="baekjoon">
-      <change afterPath="$PROJECT_DIR$/src/baekjoon_1065.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/baekjoon_1337.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/baekjoon_28125.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
@@ -154,24 +155,20 @@
       <option name="project" value="LOCAL" />
       <updated>1693482128469</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="baekjoon">
+      <created>1693492763052</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693492763052</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="baekjoon_java" />
     <MESSAGE value="baekjoon" />
     <option name="LAST_COMMIT_MESSAGE" value="baekjoon" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
