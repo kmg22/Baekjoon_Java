@@ -1,3 +1,6 @@
+[#1783 병든 나이트](https://www.acmicpc.net/problem/1783)
+---
+
 ### 입력
 100 50
 
