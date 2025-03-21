@@ -2,8 +2,6 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.*;
 
-import org.w3c.dom.Node;
-
 public class Main {
     static ArrayList<Node>[] edges;
     static int[] distance;

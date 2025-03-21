@@ -1,4 +1,4 @@
-[#14501 퇴사](https://www.acmicpc.net/problem/14501)
+[#18352 특정 거리의 도시 찾기](https://www.acmicpc.net/problem/18352)
 ---
 
 ### 입력
