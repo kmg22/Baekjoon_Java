@@ -31,20 +31,17 @@ public class Main {
             
             if(a<=D && b<=D) edges[a].add(new Node(b, d));
         }
-        bfs(D);
+        bfs();
         System.out.println(distance[D]);
     }
     
-    public static void bfs(int D){
+    public static void bfs(){
         Queue<Node> q = new LinkedList<>();
         q.add(new Node(0,0));
         distance[0] = 0;
-        // boolean[] visited = new boolean[D+1];
-
+    
         while(!q.isEmpty()){
             Node A = q.poll();
-            
-            // visited[A.n] = true;
 
             for(Node B : edges[A.n]){
                 if(distance[B.n]>distance[A.n]+B.dist){

@@ -1,79 +1,88 @@
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
 public class Main {
-    static int[][] tp = new int[3][4]; // x1 y1 x2 y2
-    static int fast, extra;
-
-    static int cal(int num, int xs, int ys, int xe, int ye){
-        int pre = fast;
-        int s1e2 = Math.abs(xs-tp[num][0])+Math.abs(ys-tp[num][1]) + Math.abs(xe-tp[num][2])+Math.abs(ye-tp[num][3]);
-        int s2e1 = Math.abs(xs-tp[num][2])+Math.abs(ys-tp[num][3]) + Math.abs(xe-tp[num][0])+Math.abs(ye-tp[num][1]);
-        
-        fast = Math.min(fast, Math.min(s1e2, s2e1)+10) + extra;
-        int k = Math.min(s1e2, s2e1)==s1e2?1:3;
-        return pre<=fast?0:k; // fast 갱신 여부 및 좌표 순서
-    }
+    static ArrayList<Node>[][] edges;
+    private static int[][] distance;
+    static int SIZE=1_000_000_001;
+    static int xs, ys, xe, ye;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader((System.in)));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String[] input = br.readLine().split(" ");
-        int xs = Integer.parseInt(input[0]);
-        int ys = Integer.parseInt(input[1]);
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        xs = Integer.parseInt(st.nextToken());
+        ys = Integer.parseInt(st.nextToken());
 
-        input = br.readLine().split(" ");
-        int xe = Integer.parseInt(input[0]);
-        int ye = Integer.parseInt(input[1]);
+        st = new StringTokenizer(br.readLine());
+        xe = Integer.parseInt(st.nextToken());
+        ye = Integer.parseInt(st.nextToken());
 
-        fast = Math.abs(xe-xs) + Math.abs(ye-ys);
-        extra = 0;
-        
-        for(int i=0; i<3; i++){
-            input = br.readLine().split(" ");
-            tp[i][0] = Integer.parseInt(input[0]);
-            tp[i][1] = Integer.parseInt(input[1]);
+        edges = new ArrayList[SIZE][SIZE];
+        distance = new int[SIZE][SIZE];
+        for(int x=0; x<SIZE; x++){
+            for(int y=0; y<SIZE; y++){
+                distance[x][y] = Integer.MAX_VALUE;
 
-            tp[i][2] = Integer.parseInt(input[2]);
-            tp[i][3] = Integer.parseInt(input[3]);
-        }
-
-        int last=-1; // 마지막 들린 tp
-        int k; // tp의 순서(먼저 들린 좌표)
-        boolean[] visit = new boolean[3]; // tp 방문여부
-        for(int i=0; i<3; i++){
-            k = cal(i, xs, ys, xe, ye);
-            if(k>0){
-                extra = Math.abs(xs-tp[i][k-1])+Math.abs(ys-tp[i][k])+10;
-                last = i;
-                visit[i] = true;
+                edges[x][y] = new ArrayList<>();
+                edges[x][y].add(new Node(x+1, y, 1));
+                edges[x][y].add(new Node(x-1, y, 1));
+                edges[x][y].add(new Node(x, y+1, 1));
+                edges[x][y].add(new Node(x, y-1, 1));
             }
         }
-       
+        edges[SIZE][SIZE] = new ArrayList<>();
+        edges[SIZE][SIZE-1] = new ArrayList<>();
+        edges[SIZE-1][SIZE] = new ArrayList<>();
+        
+        for(int i=0; i<3; i++){
+            st = new StringTokenizer(br.readLine());
+            int x1 = Integer.parseInt(st.nextToken());
+            int y1 = Integer.parseInt(st.nextToken());
 
-        if(last!=-1){ // tp 타는 게 더 빠른 경우
-            k = cal(last, xs, ys, xe, ye);
+            int x2 = Integer.parseInt(st.nextToken());
+            int y2 = Integer.parseInt(st.nextToken());
+            edges[x1][y1].add(new Node(x2, y2, 10));
+        }
 
-            for(int i=0; i<2; i++){
-                for(int j=0; j<3; j++){ // 또 다른 tp 타는 경우 계산
-                    if(!visit[j]){
-                        int tmp = (k==1)?3:1;
-                        k = cal(i, tp[last][tmp-1], tp[last][tmp], xe, ye);
-                        if(k>0){
-                            extra += Math.abs(tp[last][tmp-1]-tp[j][k-1])+Math.abs(tp[last][tmp]-tp[j][k])+10;
-                            last = j;
-                            visit[j] = true;
-                        }
-                    }
+        bfs();
+
+    }
+
+    public static void bfs(){
+        Queue<Node> q = new LinkedList<>();
+        q.add(new Node(xs, ys, 0));
+
+        distance[xs][ys] = 0;
+        //boolean[][] visited = new boolean[SIZE][SIZE];
+
+        while(!q.isEmpty()){
+            Node A = q.poll();
+            if(xs==xe && ys==ye) break;
+            //visited[xs][ys] = true;
+
+            for(Node B : edges[A.x][A.y]){
+                if(distance[B.x][B.y]>distance[A.x][A.y]+B.dist){
+                    distance[B.x][B.y] = distance[A.x][A.y]+B.dist;
+                    q.add(new Node(B.x, B.y, distance[B.x][B.y]));
                 }
             }
         }
-        
+    }
 
-        bw.write(fast+"");
-        bw.flush();
+    public static class Node{
+        int x;
+        int y;
+        int dist;
 
-        br.close();
-        bw.close();
+        Node(int x, int y, int dist){
+            this.x = x;
+            this.y = y;
+            this.dist = dist;
+        }
     }
 }
