@@ -1,0 +1,31 @@
+[#19637 IF문 좀 대신 써줘줘](https://www.acmicpc.net/problem/19637)
+---
+
+### 입력
+```
+3 8
+WEAK 10000
+NORMAL 100000
+STRONG 1000000
+0
+9999
+10000
+10001
+50000
+100000
+500000
+1000000
+```
+
+---
+### 출력
+```
+WEAK
+WEAK
+WEAK
+NORMAL
+NORMAL
+NORMAL
+STRONG
+STRONG
+```
