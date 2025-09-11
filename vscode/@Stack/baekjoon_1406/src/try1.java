@@ -1,30 +1,36 @@
-// 시간 초과 실패
-import java.util.Scanner;
+// Buffer 입출력을 통해 시간초과 문제 해결
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 public class try1{
     public static void main(String[] args) throws Exception {
-        Scanner scanner = new Scanner(System.in);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        String input = scanner.nextLine();
+        String input = br.readLine();
 
         Editor editor = new Editor();
         for(int i=0; i<input.length(); i++){
             editor.add(input.charAt(i));
         }
 
-        int M = scanner.nextInt();
-        scanner.nextLine();
+        int M = Integer.parseInt(br.readLine());
         
         for(int i=0; i<M; i++){
-            String command = scanner.nextLine();
+            String command = br.readLine();
             if(command.charAt(0)=='P'){
                 editor.command(command.charAt(0), command.charAt(2));
             }else{
                 editor.command(command.charAt(0));
             }
         }
-        editor.printAll();
-        scanner.close();
+        bw.write(editor.all());
+        bw.flush();
+
+        br.close();
+        bw.close();
     }
 }
 
@@ -150,13 +156,15 @@ class Editor{
         cursor = cursor.right;
     }
 
-    public void printAll(){
-        if(head == null) return;
+    public String all(){
+        if(head == null) return "";
+        StringBuilder sb = new StringBuilder();
         Node p = head;
         while(p != end){
-            System.out.print(p.word);
+            sb.append(p.word);
             p = p.right;
         }
+        return sb.toString();
     }
 
 }
