@@ -1,6 +1,7 @@
 [#1406 에디터](https://www.acmicpc.net/problem/1406)
 ---
-연결 리스트
+try 1 : 연결 리스트
+Main : 스택
 
 ---
 
