@@ -7,15 +7,15 @@ Main : 스택
 
 ### 입력
 ```
-abcd
 3
-P x
-L
-P y
+i want to see you
+next week
+good luck
+i want next good luck week to see you
 ```
 
 ---
 ### 출력
 ```
-abcdyx
+Possible
 ```
