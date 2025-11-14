@@ -1,6 +1,10 @@
 [#2512 예산](https://www.acmicpc.net/problem/2512)
 ---
 
+- Binary Search
+
+---
+
 ### 입력
 ```
 4
