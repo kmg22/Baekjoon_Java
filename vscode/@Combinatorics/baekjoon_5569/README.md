@@ -2,6 +2,8 @@
 ---
 
 - 조합론
+- Dynamic Programming
+- Challenge : 이동 주체의 상태 고려 -> 4차원 배열 설정
 
 
 ---
