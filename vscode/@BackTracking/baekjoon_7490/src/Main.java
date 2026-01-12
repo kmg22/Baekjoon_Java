@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.*;
-import static java.util.stream.Collectors.toList;
 
 
 public class Main {
@@ -41,18 +40,16 @@ public class Main {
 
     private static boolean calc(String str){
         str = str.replaceAll(" ", "");
-        Iterator<Integer> it = Arrays.stream(str.split("[+,-]"))
-                                .map(Integer::parseInt)
-                                .collect(toList()).iterator();
-        
-        int result = it.next();
+        String[] arr = str.split("[+,-]");
+        int idx=0;
+        int result = Integer.parseInt(arr[idx++]);
         for(int i=0; i<str.length(); i++){
             switch(str.charAt(i)){
                 case '+':
-                    result += it.next();
+                    result += Integer.parseInt(arr[idx++]);
                     break;
                 case '-':
-                    result -= it.next();
+                    result -= Integer.parseInt(arr[idx++]);
                     break;
             }
         }
